@@ -19,3 +19,8 @@ class car(models.Model):
     
     def __str__(self) -> str:
         return self.name
+
+
+    class Meta:
+        verbose_name = 'car'
+        verbose_name_plural = 'cars'
