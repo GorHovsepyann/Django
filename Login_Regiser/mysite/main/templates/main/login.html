@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Login page</H1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name = "username" placeholder="Enter your name" style="margin: 1%;"><br>
+        <input type="password" name="password" placeholder="Enter your pasword" style="margin: 1%;"><br>
+        <button type="submit" style="margin: 1%;"> login</button>
+    </form>
+</body>
+</html>
