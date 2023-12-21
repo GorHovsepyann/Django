@@ -1,0 +1,37 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+        <select name="language">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}{% for language in languages %}
+        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+        selected{% endif %}>
+            {{ language.name_local }} ({{ language.code }})
+        </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Go">
+        </form>
+        </li>
+        {% for i in news %}
+            <h1>{{ i.title }}</h1>
+            <p>{{ i.text }}</p>
+        {% endfor %}
+    </header>
+    {% for i in product_list %}
+        <p>{{ i.name }}</p>
+        <p>{{ i.about }}</p>
+        <img src="{{ i.img.url }}" width="200px" alt="">
+    {% endfor %}
+</body>
+</html>
